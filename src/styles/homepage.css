@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap");
+
+:root {
+  --brand-color1: #4263eb;
+  --brand-color2: #364fc7;
+
+  --grey-color0: #0a0c0d;
+  --grey-color1: #212529;
+  --grey-color2: #495057;
+  --grey-color3: #868e96;
+  --grey-color4: #dee2e6;
+  --grey-opacity: rgba(33, 37, 41, 0.5);
+  --white-fixed: #ffffff;
+
+  --like-color: #d7443e;
+  --font-family: "Inter", sans-serif;
+  --radius: 1rem;
+  --radius-button: 0.3rem;
+  --radius-input: 0.5rem;
+}
+
+.sectionCreate {
+  width: 100%;
+  height: 40vh;
+}
+
+.createPost {
+  width: 90%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+#postTitle {
+  width: 90%;
+  height: 1rem;
+  margin: 0 auto;
+  font-family: var(--font-family);
+}
+
+#postText {
+  width: 90%;
+  height: 3.5rem;
+  margin: 0 auto;
+  font-family: var(--font-family);
+}
+
+#buttonCreatePost {
+  width: 20%;
+  height: 2rem;
+  border: none;
+  background-color: var(--grey-color4);
+  color: var(--grey-color3);
+  border-radius: var(--radius-button);
+  font-family: var(--font-family);
+  font-weight: 600;
+}
+
+.createButtonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sectionSuggestions {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: 35%;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  width: 100%;
+  height: 10vh;
+}
+
+.postsList {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.postsList li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40vh;
+  gap: 2rem;
+}
+
+.postUser {
+  display: flex;
+  gap: 1rem;
+}
+
+.espefUser {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.espefUser h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.espefUser span {
+  font-size: 0.74rem;
+}
+
+.postsList li button {
+  border: none;
+  background-color: var(--grey-color1);
+  color: var(--white-fixed);
+  height: 2.3rem;
+  font-family: var(--font-family);
+  border-radius: var(--radius-button);
+}
+
+.postsList li button:hover {
+  background-color: var(--grey-color0);
+}
+
+.postInteraction {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 2rem;
+}
+
+.postLikes {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  height: 100%;
+}
+
+.postText {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.postText h1 {
+  line-height: 32px;
+  text-align: start;
+}
+
+.postText p {
+  font-size: 0.85rem;
+  line-height: 24px;
+}

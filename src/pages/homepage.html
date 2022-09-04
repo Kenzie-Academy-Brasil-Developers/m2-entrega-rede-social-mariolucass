@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/styles/component.css" />
+    <link rel="stylesheet" href="/src/styles/homepage.css" />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script type="module" src="/src/scripts/homepage.js" defer></script>
+    <title>Rede Social</title>
+  </head>
+  <body>
+    <header>
+      <h2>TechPosters</h2>
+      <span id="header__Logout">Sair</span>
+    </header>
+    <main>
+      <section class="sectionUser">
+        <div>
+          <div><img src="" alt="" /></div>
+          <div class="user_names">
+            <h2>Samuel Leão</h2>
+            <span>256 seguidores</span>
+          </div>
+          <span>Front end Engineer</span>
+        </div>
+      </section>
+      <section class="sectionCreate">
+        <form class="createPost">
+          <input
+            type="text"
+            name=""
+            id="postTitle"
+            placeholder="Digitar título do post"
+          />
+          <input
+            type="text"
+            name=""
+            id="postText"
+            placeholder="Digitar descrição do post"
+          />
+          <div class="createButtonDiv">
+            <button id="buttonCreatePost">Postar</button>
+          </div>
+        </form>
+      </section>
+      <section class="sectionSuggestions">
+        <h2>Sugestões pra você seguir</h2>
+        <ul class="suggestionsList"></ul>
+      </section>
+      <section class="sectionPosts">
+        <h1>Posts</h1>
+        <ul class="postsList">
+          <li>
+            <div class="postUser">
+              <div><img src="/src/assets/heartBlack.png" alt="" /></div>
+              <div class="espefUser">
+                <h2>Samuel Persuhn</h2>
+                <span>Front end Engineer</span>
+              </div>
+            </div>
+            <div class="postText">
+              <h1>
+                Como criar uma interface simples e agradável utilizando boas
+                práticas de design
+              </h1>
+              <p>
+                Hoje vamos conversar sobre como criar uma interface agradável
+                mesmo sem ter um design pronto feito pot um profissional de UI
+                design
+              </p>
+            </div>
+            <div class="postInteraction">
+              <button>Abrir Post</button>
+              <div class="postLikes">
+                <img src="/src/assets/heartBlack.png" alt="" />
+                <span>25</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
