@@ -8,10 +8,21 @@
     <link rel="stylesheet" href="/src/styles/reset.css" />
     <link rel="stylesheet" href="/src/styles/component.css" />
     <link rel="stylesheet" href="/src/styles/homepage.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
 
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
     <script type="module" src="/src/scripts/homepage.js" defer></script>
-    <title>Rede Social</title>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+      defer
+    ></script>
+
+    <title>Rede Social - homepage</title>
   </head>
   <body>
     <header>
@@ -19,16 +30,7 @@
       <span id="header__Logout">Sair</span>
     </header>
     <main>
-      <section class="sectionUser">
-        <div>
-          <div><img src="" alt="" /></div>
-          <div class="user_names">
-            <h2>Samuel Leão</h2>
-            <span>256 seguidores</span>
-          </div>
-          <span>Front end Engineer</span>
-        </div>
-      </section>
+      <section class="sectionUser"></section>
       <section class="sectionCreate">
         <form class="createPost">
           <input
@@ -54,36 +56,26 @@
       </section>
       <section class="sectionPosts">
         <h1>Posts</h1>
-        <ul class="postsList">
-          <li>
-            <div class="postUser">
-              <div><img src="/src/assets/heartBlack.png" alt="" /></div>
-              <div class="espefUser">
-                <h2>Samuel Persuhn</h2>
-                <span>Front end Engineer</span>
-              </div>
-            </div>
-            <div class="postText">
-              <h1>
-                Como criar uma interface simples e agradável utilizando boas
-                práticas de design
-              </h1>
-              <p>
-                Hoje vamos conversar sobre como criar uma interface agradável
-                mesmo sem ter um design pronto feito pot um profissional de UI
-                design
-              </p>
-            </div>
-            <div class="postInteraction">
-              <button>Abrir Post</button>
-              <div class="postLikes">
-                <img src="/src/assets/heartBlack.png" alt="" />
-                <span>25</span>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <ul class="postsList"></ul>
+      </section>
+
+      <section class="modal hidden">
+        <span id="closeModal">X</span>
       </section>
     </main>
   </body>
 </html>
+
+<!-- <div class="divUser">
+    <div>
+      <img />
+    </div>
+    <div class="espefUser">
+      <h2></h2>
+      <span></span>
+    </div>
+  </div>
+  <div class="postText">
+    <h1></h1>
+    <p></p>
+  </div> -->

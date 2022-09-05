@@ -1,39 +1,58 @@
-import { instance } from "./axios.js";
+import { instance, instance2 } from "./axios.js";
+import { Toast } from "./toast.js";
 
 export class ApiReq {
+  static colorSucess = "#4263e5";
+
+  static colorError = "#B33E26";
+
+  static idUser = localStorage.getItem("@redeSocial:userId");
+
   static async loginApi(data) {
-    const userLogin = await instance
+    const userLogin = await instance2
       .post("users/login/", data)
       .then((res) => {
         localStorage.setItem("@redeSocial:token", res.data.token);
         localStorage.setItem("@redeSocial:userId", res.data.user_uuid);
+        window.location.assign("/src/pages/homepage.html");
       })
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, `${ApiReq.colorError}`);
+      });
 
     return userLogin;
   }
 
   static async registerApi(data) {
-    const userRegister = await instance.post("users/", data).then((res) => {
-      const pass = data.password;
-      const emailres = res.data.email;
-      const data2 = {
-        email: emailres,
-        password: pass,
-      };
-
-      ApiReq.loginApi(data2);
-      document.location.reload(true);
-    });
+    const userRegister = await instance2
+      .post("users/", data)
+      .then((res) => {
+        window.location.assign("/src/pages/homepage.html");
+        Toast.create(
+          "Registrado com sucesso, seja bem-vindo",
+          this.colorSucess
+        );
+      })
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return userRegister;
   }
 
   static async getUser(id) {
     const userLogado = await instance
-      .get(`users/${id}`)
+      .get(`users/${id}/`)
       .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal);
+      });
 
     return userLogado;
   }
@@ -41,8 +60,12 @@ export class ApiReq {
   static async getPostersApi() {
     const getPosters = await instance
       .get("posts/")
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .then((res) => res.data.results)
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return getPosters;
   }
@@ -51,7 +74,11 @@ export class ApiReq {
     const getUsers = await instance
       .get("users/")
       .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return getUsers;
   }
@@ -61,8 +88,13 @@ export class ApiReq {
       .post("posts/", body)
       .then((resp) => {
         resp;
+        Toast.create("Post Criado com sucesso.", this.colorSucess);
       })
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, ApiReq.colorError);
+      });
 
     return createPoster;
   }
@@ -71,15 +103,28 @@ export class ApiReq {
     const likeaPost = await instance
       .post("likes/", id)
       .then((res) => res.data)
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return likeaPost;
   }
 
-  static async deleteLikeApi(id) {
-    const deleteLike = await instance.delete("likes/", id).then((res) => {
-      res.data;
-    });
+  static async unLikePosterApi(id) {
+    const deleteLike = await instance
+      .delete(`likes/${id}`)
+      .then((res) => {
+        res.data;
+      })
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
+
+    return deleteLike;
   }
 
   static async followUserApi(id) {
@@ -88,7 +133,11 @@ export class ApiReq {
       .then((res) => {
         res.data;
       })
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return followUser;
   }
@@ -99,7 +148,11 @@ export class ApiReq {
       .then((res) => {
         res.data;
       })
-      .catch((err) => console.log(err));
+      .catch(async (err) => {
+        const error = Object.keys(await err.response.data)[0];
+        const errorTotal = err.response.data[error][0];
+        Toast.create(errorTotal, this.colorError);
+      });
 
     return unfollowUser;
   }

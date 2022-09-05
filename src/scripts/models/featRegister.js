@@ -1,6 +1,4 @@
 import { ApiReq } from "./api.js";
-import { Modal } from "./modal.js";
-
 export class Register {
   static register() {
     const token = localStorage.getItem("@redeSocial:token");
@@ -15,7 +13,9 @@ export class Register {
       const workInput = document.getElementById("registerInputWork");
       const imgInput = document.getElementById("registerInputImg");
 
-      buttonRegister.addEventListener("click", async () => {
+      buttonRegister.addEventListener("click", async (event) => {
+        event.preventDefault();
+
         const data = {
           username: nameInput.value,
           email: emailInput.value,

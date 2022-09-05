@@ -1,5 +1,5 @@
 export class Toast {
-  static create(txt) {
+  static create(txt, color) {
     Toastify({
       text: txt,
       duration: 3000,
@@ -7,7 +7,7 @@ export class Toast {
       position: "right", // `left`, `center` or `right`
       stopOnFocus: true, // Prevents dismissing of toast on hover
       style: {
-        backgroundColor: "#4263eb",
+        backgroundColor: color,
         color: "#ffffff",
       },
     }).showToast();

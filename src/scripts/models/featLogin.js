@@ -1,8 +1,4 @@
 import { ApiReq } from "./api.js";
-import { Modal } from "./modal.js";
-
-ApiReq;
-
 export class Login {
   static login() {
     const token = localStorage.getItem("@redeSocial:token");
@@ -13,7 +9,7 @@ export class Login {
       const emailInput = document.getElementById("loginInputEmail");
       const passInput = document.getElementById("loginInputPass");
 
-      buttonLogin.addEventListener("click", async (event) => {
+      buttonLogin.addEventListener("click", (event) => {
         event.preventDefault();
         const data = {
           email: emailInput.value,

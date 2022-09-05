@@ -1,26 +1,28 @@
+import { Render } from "./render.js";
 export class Modal {
-  static template(form) {
-    const main = document.querySelector("main");
-    main.innerHTML = "";
-    const buttonHeaderLogin = document.getElementById("header__Login");
-    const buttonHeaderRegister = document.getElementById("header__Register");
+  static modalPost(post) {
+    const modal = document.querySelector(".modal");
+    const openModal = document.querySelectorAll(".postInteraction button");
+    const closeModal = document.getElementById("closeModal");
 
-    buttonHeaderLogin.className = "header__Active";
-    buttonHeaderRegister.className = "header__Inactive";
+    closeModal.addEventListener("click", (event) => {
+      event.preventDefault();
+      modal.classList.add("hidden");
+    });
 
-    main.append(form);
+    openModal.forEach((elem) => {
+      elem.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const idPost = elem.id;
+        const Posts = document.querySelectorAll(".postsList li");
+        Posts.filter((elem) => elem.id == idPost);
+        const PostforModal = Posts.filter((elem) => elem.uuid == idPost)[0];
+        Render.renderModal(PostforModal);
+      });
+    });
   }
 
-  static modalpost(post) {
-    let tagUser = document.createElement("h3");
-    let tagPostTitle = document.createElement("h2");
-    let tagWork = document.createElement("span");
-    let tagImage = document.createElement("img");
-    let tagPostText = document.createElement("p");
+  static modalLogin() {}
 
-    post.username;
-    post.work_at;
-    post.image;
-    post.followers.length;
-  }
+  static modalRegister() {}
 }

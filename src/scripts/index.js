@@ -1,7 +1,11 @@
-import { Modal } from "./models/modal.js";
 import { Render } from "./models/render.js";
 import { Login } from "./models/featLogin.js";
 
-Render.renderLogin();
-Login.login();
-Login.redirect();
+const token = localStorage.getItem("@redeSocial:token");
+if (token) {
+  window.location.replace("/src/pages/homepage.html");
+} else {
+  await Render.renderLogin();
+  Login.login();
+  Login.redirect();
+}
