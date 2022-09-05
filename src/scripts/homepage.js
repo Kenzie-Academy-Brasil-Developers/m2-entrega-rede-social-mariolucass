@@ -16,4 +16,5 @@ if (!token) {
   Modal.modalPost();
   Like.likePost();
   Follow.followUser();
+  Render.usersFollowing();
 }

@@ -1,26 +1,30 @@
 import { ApiReq } from "./api.js";
 export class Follow {
   static followUser() {
-    const userid = ApiReq.userId;
-    const followButton = document.getElementById("");
+    const followButton = document.querySelectorAll(".buttonfollow");
 
-    followButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const userId = event.id;
-      ApiReq.followUserApi(userId);
+    followButton.forEach((elem) => {
+      elem.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const userId = elem.id;
+        const data = {
+          following_users_uuid: userId,
+        };
+
+        ApiReq.followUserApi(data);
+      });
     });
   }
 
   static unfollowUser() {
-    const userid = ApiReq.userId;
-    const followButton = document.querySelectorAll(
-      ".suggestionsList .divUser button"
-    );
+    const unfollowButton = document.querySelectorAll(".buttonUnfollow");
 
-    followButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const userId = event.id;
-      ApiReq.unfollowUserApi(userId);
+    unfollowButton.forEach((elem) => {
+      elem.addEventListener("click", async (event) => {
+        event.preventDefault();
+        const userId = event.target.id;
+        ApiReq.unfollowUserApi(userId);
+      });
     });
   }
 }

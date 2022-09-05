@@ -242,6 +242,11 @@ main {
   width: 100%;
 }
 
+.buttonLike {
+  background-color: transparent;
+  width: 10px;
+}
+
 .hidden {
   display: none;
 }

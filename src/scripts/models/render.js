@@ -2,6 +2,12 @@ import { ApiReq } from "./api.js";
 export class Render {
   static idUser = localStorage.getItem("@redeSocial:userId");
 
+  static async usersFollowing() {
+    const user = await ApiReq.getUser(this.idUser);
+    const following = user.following;
+    return following;
+  }
+
   static async renderPosts() {
     const posts = await ApiReq.getPostersApi();
     const listaPosts = document.querySelector(".postsList");
@@ -79,6 +85,7 @@ export class Render {
     const divInteraction = document.createElement("div");
     const buttonOpen = document.createElement("button");
     const divLikes = document.createElement("div");
+    const buttonLike = document.createElement("button");
     const imgLike = document.createElement("img");
     const likeCounter = document.createElement("span");
 
@@ -97,7 +104,8 @@ export class Render {
     buttonOpen.innerText = "Abrir";
 
     image.src = item.author.image;
-    imgLike.id = item.uuid;
+    buttonLike.id = item.uuid;
+    buttonLike.classList.add("buttonLike");
     buttonOpen.id = item.uuid;
     li.id = item.uuid;
     imgLike.src = "/src/assets/heartBlack.png";
@@ -107,7 +115,8 @@ export class Render {
     divUserNames.append(userName, userWork);
     divTxt.append(postTitle, postTxt);
     divInteraction.append(buttonOpen, divLikes);
-    divLikes.append(imgLike, likeCounter);
+    buttonLike.append(imgLike);
+    divLikes.append(buttonLike, likeCounter);
 
     li.append(divPostUser, divTxt, divInteraction);
 
@@ -122,18 +131,13 @@ export class Render {
     const userName = document.createElement("h2");
     const work = document.createElement("span");
     const buttonFollow = document.createElement("button");
+    const buttonUnfollow = document.createElement("button");
     const divUsuario = document.createElement("div");
 
     buttonFollow.id = user.uuid;
-    if (
-      user.followers.filter((elem) => {
-        return elem.uuid == Render.idUser;
-      }).length
-    ) {
-      buttonFollow.innerText = "Seguindo";
-    } else {
-      buttonFollow.innerText = "Seguir";
-    }
+    buttonUnfollow.id = user.uuid;
+    buttonFollow.classList.add("buttonFollow");
+    buttonUnfollow.classList.add("buttonUnfollow");
 
     img.src = user.image;
     userName.innerText = user.username;
@@ -145,7 +149,19 @@ export class Render {
     divImg.append(img);
     divUserTxt.append(userName, work);
     divUsuario.append(divImg, divUserTxt);
-    li.append(divUsuario, buttonFollow);
+    li.append(divUsuario);
+    if (
+      (await this.usersFollowing()).filter((elem) => {
+        elem.uuid == Render.idUser;
+      }).length
+    ) {
+      buttonUnfollow.innerText = "Seguindo";
+      li.append(buttonUnfollow);
+    } else {
+      buttonFollow.innerText = "Seguir";
+      li.append(buttonFollow);
+    }
+
     return li;
   }
 

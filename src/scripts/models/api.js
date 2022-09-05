@@ -102,7 +102,12 @@ export class ApiReq {
   static async likePosterApi(id) {
     const likeaPost = await instance
       .post("likes/", id)
-      .then((res) => res.data)
+      .then((res) =>
+        Toast.create(
+          "Parabéns! Gostaria de curtir mais algum post?",
+          this.colorSucess
+        )
+      )
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
         const errorTotal = err.response.data[error][0];
@@ -116,7 +121,7 @@ export class ApiReq {
     const deleteLike = await instance
       .delete(`likes/${id}`)
       .then((res) => {
-        res.data;
+        Toast.create("Post descurtido com sucesso!", this.colorSucess);
       })
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
@@ -132,6 +137,10 @@ export class ApiReq {
       .post("users/follow/", id)
       .then((res) => {
         res.data;
+        Toast.create(
+          "Parabéns! Gostaria de seguir mais alguém?",
+          this.colorSucess
+        );
       })
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
@@ -147,6 +156,7 @@ export class ApiReq {
       .delete(`users/unfollow/${id}`)
       .then((res) => {
         res.data;
+        Toast.create("Você deu unfollow com sucesso.", this.colorSucess);
       })
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
