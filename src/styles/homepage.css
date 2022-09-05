@@ -1,0 +1,330 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap");
+
+:root {
+  --brand-color1: #4263eb;
+  --brand-color2: #364fc7;
+
+  --grey-color0: #0a0c0d;
+  --grey-color1: #212529;
+  --grey-color2: #495057;
+  --grey-color3: #868e96;
+  --grey-color4: #dee2e6;
+  --grey-opacity: rgba(33, 37, 41, 0.5);
+  --white-fixed: #ffffff;
+
+  --like-color: #d7443e;
+
+  --font-family: "Inter", sans-serif;
+  --radius: 1rem;
+  --radius-button: 0.3rem;
+  --radius-input: 0.5rem;
+}
+
+main {
+  margin-top: 35%;
+}
+
+.sectionCreate {
+  width: 100%;
+  height: 40vh;
+}
+
+.createPost {
+  width: 95%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  padding-top: 1rem;
+  margin: 0 auto;
+}
+
+.createPost {
+  width: 100%;
+}
+
+#postText {
+  height: 4.2rem;
+}
+
+#buttonCreatePost {
+  width: 20%;
+  height: 2rem;
+  border: none;
+  background-color: var(--grey-color4);
+  color: var(--grey-color3);
+  border-radius: var(--radius-button);
+  font-family: var(--font-family);
+  font-weight: 600;
+}
+
+#buttonCreatePost:hover {
+  background-color: #edf2ff;
+  opacity: 100%;
+  border: 1px var(--brand-color2) solid;
+  color: var(--brand-color1);
+}
+
+#buttonCreatePost:active,
+#buttonCreatePost:focus {
+  background-color: var(--brand-color1);
+  color: var(--white-fixed);
+  font-family: var(--font-family);
+  border: none;
+}
+
+.createButtonDiv {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sectionSuggestions {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  height: 35%;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  width: 100%;
+  height: 20vh;
+  overflow-x: auto;
+  gap: 3rem;
+}
+
+.suggestionsList .espefUser {
+  width: 70%;
+}
+
+.suggestionsList li {
+  min-width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.suggestionsList li button {
+  height: 2rem;
+  width: 40%;
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  background-color: var(--white-fixed);
+  border: 1px var(--grey-color0) solid;
+  font-family: var(--font-family);
+  font-weight: bold;
+}
+
+.suggestionsList li button:hover {
+  opacity: 100%;
+  border: 1px var(--brand-color2) solid;
+  background-color: #edf2ff;
+  color: var(--brand-color1);
+}
+
+.suggestionsList li button:active,
+.suggestionsList li button:focus {
+  background-color: var(--brand-color1);
+  color: var(--white-fixed);
+  font-family: var(--font-family);
+  border: none;
+}
+
+.divUser {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 0.8rem;
+}
+
+.postsList {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 2.5rem;
+}
+
+.postsList li {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 90%;
+  gap: 2rem;
+}
+
+.postUser {
+  display: flex;
+  gap: 1rem;
+}
+
+.espefUser {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.espefUser h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.espefUser span {
+  font-size: 0.74rem;
+}
+
+.postsList li button {
+  border: none;
+  background-color: var(--grey-color1);
+  color: var(--white-fixed);
+  height: 2.3rem;
+  font-family: var(--font-family);
+  border-radius: var(--radius-button);
+  width: 20%;
+}
+
+.postsList li button:hover {
+  background-color: var(--grey-color0);
+}
+
+.postInteraction {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+}
+
+.postLikes {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  height: 100%;
+}
+
+.postText {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1rem;
+}
+
+.postText h1 {
+  line-height: 32px;
+  text-align: start;
+}
+
+.postText p {
+  font-size: 0.85rem;
+  line-height: 24px;
+}
+
+.divImagem {
+  width: 15.5vw;
+  height: 50px;
+}
+
+.divImagem img {
+  border: 2px solid var(--brand-color1);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: calc(var(--radius) * 3);
+}
+
+.sectionUser {
+  width: 100%;
+}
+
+.buttonLike {
+  background-color: transparent;
+  width: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 1023px) {
+  main {
+    display: flex;
+    margin-top: 10%;
+    align-items: flex-start;
+    gap: 4rem;
+  }
+
+  .divImagem {
+    width: 4vw;
+    height: 50px;
+  }
+
+  .sectionPosts {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 42.5%;
+  }
+
+  .sectionCreate {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+  }
+
+  .createPost {
+    width: 42.5%;
+    margin: 0;
+    height: 20vh;
+  }
+
+  .suggestionsList {
+    flex-direction: column;
+    overflow-y: hidden;
+    height: 55%;
+    gap: 0.5rem;
+  }
+
+  .suggestionsList li {
+    flex-direction: row;
+    height: 15vh;
+    justify-content: left;
+  }
+
+  .suggestionsList li button {
+    width: 20%;
+  }
+
+  .sectionSuggestions {
+    position: fixed;
+    right: 5%;
+    top: 15%;
+    height: 70vh;
+    width: 30%;
+    gap: 2rem;
+  }
+
+  .divUser {
+    width: 50%;
+  }
+
+  #buttonCreatePost {
+    width: 12.5%;
+  }
+
+  .postsList li button {
+    width: 10%;
+  }
+}
+
+@media (min-width: 1599px) {
+  .divImagem {
+    width: 2.1vw;
+    height: 50px;
+  }
+}

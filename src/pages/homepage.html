@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/src/styles/reset.css" />
+    <link rel="stylesheet" href="/src/styles/component.css" />
+    <link rel="stylesheet" href="/src/styles/homepage.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script type="module" src="/src/scripts/homepage.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+      defer
+    ></script>
+
+    <title>Rede Social - homepage</title>
+  </head>
+  <body>
+    <header>
+      <h2>TechPosters</h2>
+      <span id="header__Logout">Sair</span>
+    </header>
+    <main>
+      <section class="sectionUser"></section>
+      <section class="sectionCreate">
+        <form class="createPost">
+          <input
+            type="text"
+            name=""
+            id="postTitle"
+            placeholder="Digitar título do post"
+          />
+          <input
+            type="text"
+            name=""
+            id="postText"
+            placeholder="Digitar descrição do post"
+          />
+          <div class="createButtonDiv">
+            <button id="buttonCreatePost">Postar</button>
+          </div>
+        </form>
+      </section>
+      <section class="sectionSuggestions">
+        <h2>Sugestões pra você seguir</h2>
+        <ul class="suggestionsList"></ul>
+      </section>
+      <section class="sectionPosts">
+        <h1>Posts</h1>
+        <ul class="postsList"></ul>
+      </section>
+
+      <section class="modal hidden">
+        <span id="closeModal">X</span>
+      </section>
+    </main>
+  </body>
+</html>
+
+<!-- <div class="divUser">
+    <div>
+      <img />
+    </div>
+    <div class="espefUser">
+      <h2></h2>
+      <span></span>
+    </div>
+  </div>
+  <div class="postText">
+    <h1></h1>
+    <p></p>
+  </div> -->
