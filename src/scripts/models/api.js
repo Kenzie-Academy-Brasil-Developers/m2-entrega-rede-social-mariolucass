@@ -136,7 +136,6 @@ export class ApiReq {
     const followUser = await instance
       .post("users/follow/", id)
       .then((res) => {
-        res.data;
         Toast.create(
           "Parabéns! Gostaria de seguir mais alguém?",
           this.colorSucess

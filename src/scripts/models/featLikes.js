@@ -1,26 +1,28 @@
 import { ApiReq } from "./api.js";
 export class Like {
   static likePost() {
-    const userid = ApiReq.userId;
-    const likeButton = document.querySelector(".postLikes img");
-
-    likeButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      likeButton.src = "/src/assets/heartRed.png";
-      const userId = event.id;
-      ApiReq.likePosterApi(userId);
-    });
-  }
-
-  static unlikePost() {
-    const userid = ApiReq.userId;
-    const likeButton = document.querySelector(".postLikes img");
-
-    likeButton.addEventListener("click", async (event) => {
-      event.preventDefault();
-      const userId = event.id;
-      likeButton.src = "/src/assets/heartRed.png";
-      ApiReq.unlikePosterApi(userId);
+    const likeButtons = document.querySelectorAll(".buttonLike");
+    likeButtons.forEach((elem) => {
+      elem.addEventListener("click", async (event) => {
+        event.preventDefault();
+        if (elem.children[0].className == "Unliked") {
+          elem.children[0].src = "/src/assets/heartRed.png";
+          elem.children[0].className = "Liked";
+          elem.nextSibling.textContent = +elem.nextSibling.textContent + 1;
+          elem.classList.remove("buttonLike");
+          elem.classList.add("buttonUnlike");
+          const data = {
+            post_uuid: elem.id,
+          };
+          ApiReq.likePosterApi(data);
+        } else if (elem.children[0].className == "Liked") {
+          elem.children[0].src = "/src/assets/heartBlack.png";
+          elem.nextSibling.textContent = +elem.nextSibling.textContent - 1;
+          elem.classList.add("buttonLike");
+          elem.classList.remove("buttonUnlike");
+          ApiReq.unlikePosterApi(elem.id);
+        }
+      });
     });
   }
 }

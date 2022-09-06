@@ -13,8 +13,8 @@ if (!token) {
   Create.createPost();
   await Render.renderUsers();
   await Render.renderPosts();
+  Follow.followUser();
+  Follow.unfollowUser();
   Modal.modalPost();
   Like.likePost();
-  Follow.followUser();
-  Render.usersFollowing();
 }

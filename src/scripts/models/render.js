@@ -4,9 +4,15 @@ export class Render {
 
   static async usersFollowing() {
     const user = await ApiReq.getUser(this.idUser);
-    const following = user.following;
-    return following;
+    let arrayFollowing = [];
+    user.following.forEach((elem) => {
+      arrayFollowing.push(elem.following_users_id.uuid);
+    });
+
+    return arrayFollowing;
   }
+
+  static async idFollows() {}
 
   static async renderPosts() {
     const posts = await ApiReq.getPostersApi();
@@ -95,6 +101,8 @@ export class Render {
     divPostUser.classList.add("divUser");
     divUserNames.classList.add("espefUser");
     divImg.classList.add("divImagem");
+    buttonOpen.classList.add("buttonOpen");
+    buttonLike.classList.add("buttonLike");
 
     userName.innerText = item.author.username;
     userWork.innerText = item.author.work_at;
@@ -104,6 +112,7 @@ export class Render {
     buttonOpen.innerText = "Abrir";
 
     image.src = item.author.image;
+    imgLike.classList.add("Unliked");
     buttonLike.id = item.uuid;
     buttonLike.classList.add("buttonLike");
     buttonOpen.id = item.uuid;
@@ -150,11 +159,7 @@ export class Render {
     divUserTxt.append(userName, work);
     divUsuario.append(divImg, divUserTxt);
     li.append(divUsuario);
-    if (
-      (await this.usersFollowing()).filter((elem) => {
-        elem.uuid == Render.idUser;
-      }).length
-    ) {
+    if ((await this.usersFollowing()).includes(user.uuid)) {
       buttonUnfollow.innerText = "Seguindo";
       li.append(buttonUnfollow);
     } else {
