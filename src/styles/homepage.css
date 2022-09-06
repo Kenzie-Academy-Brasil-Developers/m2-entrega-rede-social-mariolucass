@@ -110,7 +110,7 @@ main {
   gap: 1rem;
 }
 
-.suggestionsList li button {
+.buttonFollow {
   height: 2rem;
   width: 40%;
   border-radius: var(--radius-button);
@@ -121,15 +121,15 @@ main {
   font-weight: bold;
 }
 
-.suggestionsList li button:hover {
+.buttonFollow:hover {
   opacity: 100%;
   border: 1px var(--brand-color2) solid;
   background-color: #edf2ff;
   color: var(--brand-color1);
 }
 
-.suggestionsList li button:active,
-.suggestionsList li button:focus {
+.buttonFollow:active,
+.buttonFollow:focus {
   background-color: var(--brand-color1);
   color: var(--white-fixed);
   font-family: var(--font-family);
@@ -179,7 +179,7 @@ main {
   font-size: 0.74rem;
 }
 
-.postsList li button {
+.buttonOpen {
   border: none;
   background-color: var(--grey-color1);
   color: var(--white-fixed);
@@ -189,7 +189,7 @@ main {
   width: 20%;
 }
 
-.postsList li button:hover {
+.buttonOpen:hover {
   background-color: var(--grey-color0);
 }
 
@@ -226,7 +226,7 @@ main {
 }
 
 .divImagem {
-  width: 15.5vw;
+  width: 50px;
   height: 50px;
 }
 
@@ -242,9 +242,25 @@ main {
   width: 100%;
 }
 
-.buttonLike {
+.buttonLike,
+.buttonUnlike {
   background-color: transparent;
-  width: 10px;
+  width: 50px;
+  height: 45px;
+  border: none;
+}
+
+.buttonUnfollow {
+  border-radius: var(--radius-button);
+  cursor: pointer;
+  height: 2rem;
+  width: 40%;
+  background-color: var(--brand-color1);
+  color: var(--white-fixed);
+  font-family: var(--font-family);
+  border: none;
+  font-family: var(--font-family);
+  font-weight: bold;
 }
 
 .hidden {
@@ -257,11 +273,6 @@ main {
     margin-top: 10%;
     align-items: flex-start;
     gap: 4rem;
-  }
-
-  .divImagem {
-    width: 4vw;
-    height: 50px;
   }
 
   .sectionPosts {
@@ -319,12 +330,5 @@ main {
 
   .postsList li button {
     width: 10%;
-  }
-}
-
-@media (min-width: 1599px) {
-  .divImagem {
-    width: 2.1vw;
-    height: 50px;
   }
 }

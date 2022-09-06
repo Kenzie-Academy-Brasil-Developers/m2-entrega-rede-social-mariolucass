@@ -2,7 +2,7 @@ import { Render } from "./render.js";
 export class Modal {
   static modalPost(post) {
     const modal = document.querySelector(".modal");
-    const openModal = document.querySelectorAll(".postInteraction button");
+    const openModal = document.querySelectorAll(".buttonOpen");
     const closeModal = document.getElementById("closeModal");
 
     closeModal.addEventListener("click", (event) => {
