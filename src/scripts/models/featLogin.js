@@ -32,6 +32,4 @@ export class Login {
     event.preventDefault();
     window.location.replace("/src/pages/register.html");
   }
-
-  static showLoginModal() {}
 }

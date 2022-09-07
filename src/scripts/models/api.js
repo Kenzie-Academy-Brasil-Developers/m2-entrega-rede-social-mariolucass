@@ -3,9 +3,7 @@ import { Toast } from "./toast.js";
 
 export class ApiReq {
   static colorSucess = "#4263e5";
-
   static colorError = "#B33E26";
-
   static idUser = localStorage.getItem("@redeSocial:userId");
 
   static async loginApi(data) {
