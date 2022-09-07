@@ -42,6 +42,4 @@ export class Register {
     event.preventDefault();
     window.location.replace("/index.html");
   }
-
-  static showSignupModal() {}
 }

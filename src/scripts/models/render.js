@@ -65,6 +65,95 @@ export class Render {
     section.append(await Render.createUser(await ApiReq.getUser(userid)));
   }
 
+  static async renderSignUp() {
+    const main = document.querySelector("main");
+    const form = document.createElement("form");
+    const divTitleRegister = document.createElement("div");
+    const registerTitle = document.createElement("h1");
+    const buttonRedirect1 = document.createElement("button");
+    const nameInput = document.createElement("input");
+    const emailInput = document.createElement("input");
+    const passInput = document.createElement("input");
+    const workInput = document.createElement("input");
+    const imgInput = document.createElement("input");
+    const buttonRegister = document.createElement("button");
+    const divRegisterRed = document.createElement("div");
+    const haveLogin = document.createElement("span");
+    const buttonRedirect = document.createElement("button");
+
+    divRegisterRed.classList.add("div1");
+    buttonRegister.classList.add("buttonRequest");
+    divTitleRegister.classList.add("registerDiv");
+
+    nameInput.id = "registerInputName";
+    emailInput.id = "registerInputEmail";
+    passInput.id = "registerInputPass";
+    workInput.id = "registerInputWork";
+    imgInput.id = "registerInputImg";
+    buttonRegister.id = "registerButton";
+    registerTitle.innerText = "Cadastro";
+    haveLogin.innerText = "Já possui login";
+    buttonRedirect.id = "redirectLogin";
+    buttonRedirect1.innerText = "Voltar";
+
+    nameInput.placeholder = "Seu nome";
+    emailInput.placeholder = "Seu e-mail";
+    passInput.placeholder = "Sua senha";
+    workInput.placeholder = "Qual o seu trabalho?";
+    imgInput.placeholder = "URL da imagem do perfil";
+
+    buttonRegister.innerText = "Registrar";
+    buttonRedirect.innerText = "Ir para a página de login";
+
+    divRegisterRed.append(haveLogin, buttonRedirect);
+    divTitleRegister.append(registerTitle, buttonRedirect1);
+    form.append(
+      divTitleRegister,
+      nameInput,
+      emailInput,
+      passInput,
+      workInput,
+      imgInput,
+      buttonRegister,
+      divRegisterRed
+    );
+
+    main.append(form);
+  }
+
+  static async renderLogin() {
+    const main = document.querySelector("main");
+    const form = document.createElement("form");
+    const loginTitle = document.createElement("h1");
+    const inputEmail = document.createElement("input");
+    const inputPass = document.createElement("input");
+    const buttonLogin = document.createElement("button");
+    const divLoginRed = document.createElement("div");
+    const noLogin = document.createElement("span");
+    const buttonRedirect = document.createElement("button");
+
+    divLoginRed.classList.add("div1");
+    buttonLogin.classList.add("buttonRequest");
+
+    inputEmail.id = "loginInputEmail";
+    inputPass.id = "loginInputPass";
+    buttonLogin.id = "loginButton";
+    loginTitle.innerText = "Login";
+    noLogin.innerText = "Ainda não possui cadastro?";
+    buttonRedirect.id = "redirectRegister";
+
+    inputEmail.placeholder = "Seu e-mail";
+    inputPass.placeholder = "Sua senha";
+
+    buttonLogin.innerText = "Login";
+    buttonRedirect.innerText = "Ir para a página de registro";
+
+    divLoginRed.append(noLogin, buttonRedirect);
+    form.append(loginTitle, inputEmail, inputPass, buttonLogin, divLoginRed);
+
+    main.append(form);
+  }
+
   static async renderModal(post) {
     const modal = document.querySelector(".modal");
     modal.append(this.createModalPost(post));
@@ -159,133 +248,6 @@ export class Render {
     return li;
   }
 
-  static async createUsers(user) {
-    const li = document.createElement("li");
-    const divImg = document.createElement("div");
-    const img = document.createElement("img");
-    const divUserTxt = document.createElement("div");
-    const userName = document.createElement("h2");
-    const work = document.createElement("span");
-    const buttonFollow = document.createElement("button");
-    const buttonUnfollow = document.createElement("button");
-    const divUsuario = document.createElement("div");
-
-    buttonFollow.id = user.uuid;
-    buttonUnfollow.id = user.uuid;
-    buttonFollow.classList.add("buttonFollow");
-    buttonUnfollow.classList.add("buttonUnfollow");
-
-    img.src = user.image;
-    userName.innerText = user.username;
-    work.innerText = user.work_at;
-    divImg.classList.add("divImagem");
-    divUserTxt.classList.add("espefUser");
-    divUsuario.classList.add("divUser");
-
-    divImg.append(img);
-    divUserTxt.append(userName, work);
-    divUsuario.append(divImg, divUserTxt);
-    li.append(divUsuario);
-    if ((await this.usersFollowing()).includes(user.uuid)) {
-      buttonUnfollow.innerText = "Seguindo";
-      li.append(buttonUnfollow);
-    } else {
-      buttonFollow.innerText = "Seguir";
-      li.append(buttonFollow);
-    }
-
-    return li;
-  }
-
-  static async renderSignUp() {
-    const main = document.querySelector("main");
-    const form = document.createElement("form");
-    const divTitleRegister = document.createElement("div");
-    const registerTitle = document.createElement("h1");
-    const buttonRedirect1 = document.createElement("button");
-    const nameInput = document.createElement("input");
-    const emailInput = document.createElement("input");
-    const passInput = document.createElement("input");
-    const workInput = document.createElement("input");
-    const imgInput = document.createElement("input");
-    const buttonRegister = document.createElement("button");
-    const divRegisterRed = document.createElement("div");
-    const haveLogin = document.createElement("span");
-    const buttonRedirect = document.createElement("button");
-
-    divRegisterRed.classList.add("div1");
-    buttonRegister.classList.add("buttonRequest");
-    divTitleRegister.classList.add("registerDiv");
-
-    nameInput.id = "registerInputName";
-    emailInput.id = "registerInputEmail";
-    passInput.id = "registerInputPass";
-    workInput.id = "registerInputWork";
-    imgInput.id = "registerInputImg";
-    buttonRegister.id = "registerButton";
-    registerTitle.innerText = "Cadastro";
-    haveLogin.innerText = "Já possui login";
-    buttonRedirect.id = "redirectLogin";
-    buttonRedirect1.innerText = "Voltar";
-
-    nameInput.placeholder = "Seu nome";
-    emailInput.placeholder = "Seu e-mail";
-    passInput.placeholder = "Sua senha";
-    workInput.placeholder = "Qual o seu trabalho?";
-    imgInput.placeholder = "URL da imagem do perfil";
-
-    buttonRegister.innerText = "Registrar";
-    buttonRedirect.innerText = "Ir para a página de login";
-
-    divRegisterRed.append(haveLogin, buttonRedirect);
-    divTitleRegister.append(registerTitle, buttonRedirect1);
-    form.append(
-      divTitleRegister,
-      nameInput,
-      emailInput,
-      passInput,
-      workInput,
-      imgInput,
-      buttonRegister,
-      divRegisterRed
-    );
-
-    main.append(form);
-  }
-
-  static async renderLogin() {
-    const main = document.querySelector("main");
-    const form = document.createElement("form");
-    const loginTitle = document.createElement("h1");
-    const inputEmail = document.createElement("input");
-    const inputPass = document.createElement("input");
-    const buttonLogin = document.createElement("button");
-    const divLoginRed = document.createElement("div");
-    const noLogin = document.createElement("span");
-    const buttonRedirect = document.createElement("button");
-
-    divLoginRed.classList.add("div1");
-    buttonLogin.classList.add("buttonRequest");
-
-    inputEmail.id = "loginInputEmail";
-    inputPass.id = "loginInputPass";
-    buttonLogin.id = "loginButton";
-    loginTitle.innerText = "Login";
-    noLogin.innerText = "Ainda não possui cadastro?";
-    buttonRedirect.id = "redirectRegister";
-
-    inputEmail.placeholder = "Seu e-mail";
-    inputPass.placeholder = "Sua senha";
-
-    buttonLogin.innerText = "Login";
-    buttonRedirect.innerText = "Ir para a página de registro";
-
-    divLoginRed.append(noLogin, buttonRedirect);
-    form.append(loginTitle, inputEmail, inputPass, buttonLogin, divLoginRed);
-
-    main.append(form);
-  }
-
   static async createModalPost(item) {
     const secao = document.querySelector(".modal");
     secao.innerHTML = "";
@@ -328,6 +290,44 @@ export class Render {
     divTotal.append(spanFecharModal, divPostUser, divTxt);
 
     return divTotal;
+  }
+
+  static async createUsers(user) {
+    const li = document.createElement("li");
+    const divImg = document.createElement("div");
+    const img = document.createElement("img");
+    const divUserTxt = document.createElement("div");
+    const userName = document.createElement("h2");
+    const work = document.createElement("span");
+    const buttonFollow = document.createElement("button");
+    const buttonUnfollow = document.createElement("button");
+    const divUsuario = document.createElement("div");
+
+    buttonFollow.id = user.uuid;
+    buttonUnfollow.id = user.uuid;
+    buttonFollow.classList.add("buttonFollow");
+    buttonUnfollow.classList.add("buttonUnfollow");
+
+    img.src = user.image;
+    userName.innerText = user.username;
+    work.innerText = user.work_at;
+    divImg.classList.add("divImagem");
+    divUserTxt.classList.add("espefUser");
+    divUsuario.classList.add("divUser");
+
+    divImg.append(img);
+    divUserTxt.append(userName, work);
+    divUsuario.append(divImg, divUserTxt);
+    li.append(divUsuario);
+    if ((await this.usersFollowing()).includes(user.uuid)) {
+      buttonUnfollow.innerText = "Seguindo";
+      li.append(buttonUnfollow);
+    } else {
+      buttonFollow.innerText = "Seguir";
+      li.append(buttonFollow);
+    }
+
+    return li;
   }
 
   static async logout() {
