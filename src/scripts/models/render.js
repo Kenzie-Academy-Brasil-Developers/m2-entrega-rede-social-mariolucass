@@ -12,7 +12,24 @@ export class Render {
     return arrayFollowing;
   }
 
-  static async idFollows() {}
+  static async idFollowing() {
+    const user = await ApiReq.getUser(this.idUser);
+    let arrayFollowing = [];
+    let arrayFollowingUser = [];
+    user.following.forEach((elem) => {
+      arrayFollowing.push(elem.uuid);
+      arrayFollowingUser.push(elem.following_users_id.uuid);
+    });
+    const arrayTotal = [arrayFollowing, arrayFollowingUser];
+
+    return arrayTotal;
+  }
+
+  static async idLikes(idPost) {
+    const posts = await ApiReq.getPostersApi();
+    const postLike = posts.filter((elemen) => elemen.uuid == idPost)[0].likes;
+    return postLike.filter((elem) => elem.user.uuid == this.idUser)[0].uuid;
+  }
 
   static async renderPosts() {
     const posts = await ApiReq.getPostersApi();
@@ -112,12 +129,22 @@ export class Render {
     buttonOpen.innerText = "Abrir";
 
     image.src = item.author.image;
-    imgLike.classList.add("Unliked");
     buttonLike.id = item.uuid;
     buttonLike.classList.add("buttonLike");
     buttonOpen.id = item.uuid;
     li.id = item.uuid;
-    imgLike.src = "/src/assets/heartBlack.png";
+
+    if (
+      item.likes.filter((elem) => {
+        return elem.user.uuid == Render.idUser;
+      }).length
+    ) {
+      imgLike.src = "/src/assets/heartRed.png";
+      imgLike.className = "Liked";
+    } else {
+      imgLike.src = "/src/assets/heartBlack.png";
+      imgLike.className = "Unliked";
+    }
 
     divPostUser.append(divImg, divUserNames);
     divImg.append(image);
@@ -260,34 +287,45 @@ export class Render {
   }
 
   static async createModalPost(item) {
+    const secao = document.querySelector(".modal");
+    secao.innerHTML = "";
+    const spanFecharModal = document.createElement("span");
     const divTotal = document.createElement("div");
-    const divUser = document.createElement("div");
-    const divImage = document.createElement("div");
-    const img = document.createElement("img");
-    const divEspec = document.createElement("div");
+    const divPostUser = document.createElement("div");
+    const divImg = document.createElement("div");
+    const image = document.createElement("img");
+    const divUserNames = document.createElement("div");
     const userName = document.createElement("h2");
-    const work = document.createElement("span");
-    const divPostText = document.createElement("div");
+    const userWork = document.createElement("span");
+    const divTxt = document.createElement("div");
     const postTitle = document.createElement("h1");
     const postTxt = document.createElement("p");
 
-    divPostText.classList.add("postText");
-    divUser.classList.add("divUser");
-    divEspec.classList.add("espefUser");
-    divImage.classList.add("divImagem");
+    divTxt.classList.add("postText");
+    divPostUser.classList.add("divUser");
+    divUserNames.classList.add("espefUser");
+    divImg.classList.add("divImagem");
+    divTotal.classList.add("divModal");
+
+    spanFecharModal.addEventListener("click", (event) => {
+      event.preventDefault();
+      secao.classList.add("hidden");
+    });
 
     userName.innerText = item.author.username;
-    work.innerText = item.author.work_at;
+    userWork.innerText = item.author.work_at;
     postTitle.innerText = item.title;
     postTxt.innerText = item.description;
-    img.src = item.author.image;
+    image.src = item.author.image;
+    spanFecharModal.id = "closeModal";
+    spanFecharModal.innerText = "X";
 
-    divUser.append(divImage, divEspec);
-    divImage.append(img);
-    divEspec.append(userName, work);
-    divPostText.append(postTitle, postTxt);
+    divPostUser.append(divImg, divUserNames);
+    divImg.append(image);
+    divUserNames.append(userName, userWork);
+    divTxt.append(postTitle, postTxt);
 
-    divTotal.append(divUser, divPostText);
+    divTotal.append(spanFecharModal, divPostUser, divTxt);
 
     return divTotal;
   }

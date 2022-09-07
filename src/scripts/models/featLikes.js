@@ -1,4 +1,5 @@
 import { ApiReq } from "./api.js";
+import { Render } from "./render.js";
 export class Like {
   static likePost() {
     const likeButtons = document.querySelectorAll(".buttonLike");
@@ -14,13 +15,13 @@ export class Like {
           const data = {
             post_uuid: elem.id,
           };
-          ApiReq.likePosterApi(data);
+          await ApiReq.likePosterApi(data);
         } else if (elem.children[0].className == "Liked") {
           elem.children[0].src = "/src/assets/heartBlack.png";
           elem.nextSibling.textContent = +elem.nextSibling.textContent - 1;
           elem.classList.add("buttonLike");
           elem.classList.remove("buttonUnlike");
-          ApiReq.unlikePosterApi(elem.id);
+          await ApiReq.unlikePosterApi(await Render.idLikes(elem.id));
         }
       });
     });
