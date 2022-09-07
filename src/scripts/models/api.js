@@ -59,7 +59,7 @@ export class ApiReq {
 
   static async getPostersApi() {
     const getPosters = await instance
-      .get("posts/?limit=10&offset=10")
+      .get("posts/?limit=10&offset=30")
       .then((res) => res.data.results)
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
@@ -72,7 +72,7 @@ export class ApiReq {
 
   static async getUsersApi() {
     const getUsers = await instance
-      .get("users/")
+      .get("users/?limit=50&offset=20")
       .then((res) => res.data)
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
