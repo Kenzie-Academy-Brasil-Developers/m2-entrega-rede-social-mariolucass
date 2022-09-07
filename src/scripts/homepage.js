@@ -14,7 +14,6 @@ if (!token) {
   await Render.renderUsers();
   await Render.renderPosts();
   Follow.followUser();
-  Follow.unfollowUser();
-  Modal.modalPost();
   Like.likePost();
+  Modal.modalPost();
 }

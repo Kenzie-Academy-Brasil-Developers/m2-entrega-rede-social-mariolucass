@@ -59,7 +59,7 @@ export class ApiReq {
 
   static async getPostersApi() {
     const getPosters = await instance
-      .get("posts/")
+      .get("posts/?limit=10&offset=10")
       .then((res) => res.data.results)
       .catch(async (err) => {
         const error = Object.keys(await err.response.data)[0];
@@ -117,7 +117,7 @@ export class ApiReq {
     return likeaPost;
   }
 
-  static async unLikePosterApi(id) {
+  static async unlikePosterApi(id) {
     const deleteLike = await instance
       .delete(`likes/${id}`)
       .then((res) => {

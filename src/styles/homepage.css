@@ -1,24 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500;700&display=swap");
-
-:root {
-  --brand-color1: #4263eb;
-  --brand-color2: #364fc7;
-
-  --grey-color0: #0a0c0d;
-  --grey-color1: #212529;
-  --grey-color2: #495057;
-  --grey-color3: #868e96;
-  --grey-color4: #dee2e6;
-  --grey-opacity: rgba(33, 37, 41, 0.5);
-  --white-fixed: #ffffff;
-
-  --like-color: #d7443e;
-
-  --font-family: "Inter", sans-serif;
-  --radius: 1rem;
-  --radius-button: 0.3rem;
-  --radius-input: 0.5rem;
-}
+@import url("/src/styles/component.css");
 
 main {
   margin-top: 35%;
@@ -187,6 +168,7 @@ main {
   font-family: var(--font-family);
   border-radius: var(--radius-button);
   width: 20%;
+  cursor: pointer;
 }
 
 .buttonOpen:hover {
@@ -248,9 +230,11 @@ main {
   width: 50px;
   height: 45px;
   border: none;
+  cursor: pointer;
 }
 
 .buttonUnfollow {
+  font-size: 10px;
   border-radius: var(--radius-button);
   cursor: pointer;
   height: 2rem;
@@ -261,6 +245,37 @@ main {
   border: none;
   font-family: var(--font-family);
   font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  width: 100vw;
+  height: 110vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(17, 17, 26, 0.4);
+}
+
+.divModal {
+  padding: 1rem;
+  width: 80%;
+  height: 50%;
+  background-color: var(--white-fixed);
+  border-radius: calc(var(--radius) - 0.2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  margin-top: 12.5%;
+}
+
+#closeModal {
+  position: relative;
+  left: 95%;
+  cursor: pointer;
 }
 
 .hidden {
@@ -328,7 +343,7 @@ main {
     width: 12.5%;
   }
 
-  .postsList li button {
-    width: 10%;
+  .divModal {
+    width: 40%;
   }
 }
