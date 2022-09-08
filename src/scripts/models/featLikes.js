@@ -16,7 +16,8 @@ export class Like {
             post_uuid: elem.id,
           };
           await ApiReq.likePosterApi(data);
-        } else if (elem.children[0].className == "Liked") {
+        } else {
+          elem.children[0].className = "Unliked";
           elem.children[0].src = "/src/assets/heartBlack.png";
           elem.nextSibling.textContent = +elem.nextSibling.textContent - 1;
           elem.classList.add("buttonLike");
