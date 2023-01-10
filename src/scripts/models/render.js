@@ -101,6 +101,7 @@ export class Render {
     passInput.placeholder = "Sua senha";
     workInput.placeholder = "Qual o seu trabalho?";
     imgInput.placeholder = "URL da imagem do perfil";
+    passInput.type = "password";
 
     buttonRegister.innerText = "Registrar";
     buttonRedirect.innerText = "Ir para a página de login";
@@ -144,6 +145,7 @@ export class Render {
 
     inputEmail.placeholder = "Seu e-mail";
     inputPass.placeholder = "Sua senha";
+    inputPass.type = "password";
 
     buttonLogin.innerText = "Login";
     buttonRedirect.innerText = "Ir para a página de registro";
